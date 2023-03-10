@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="09-03-2023-001" author="denis.gitonga">
+        <createSequence
+                schemaName="url_shortener"
+                sequenceName="short_url_counter_seq"
+                cacheSize="1"
+                startValue="100000000000"
+                incrementBy="1"
+        />
+    </changeSet>
+
+    <changeSet id="09-03-2023-002" author="denis.gitonga">
+        <createTable schemaName="url_shortener" tableName="url_mapping">
+            <column name="short_url" type="varchar(7)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="long_url" type="varchar(2000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expires_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="visits" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

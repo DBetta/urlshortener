@@ -1,0 +1,11 @@
+/frontend/node_modules
+/frontend/.vscode
+target
+build
+package-lock.json
+.git
+.mvn
+gradle
+.gradle
+docker
+/src/*

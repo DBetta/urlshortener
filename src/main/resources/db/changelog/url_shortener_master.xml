@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="09-03-2023-001" author="denis.gitonga">
+        <sql dbms="postgresql" endDelimiter=";">
+            create schema url_shortener;
+            CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+        </sql>
+    </changeSet>
+
+    <include file="db/changelog/url_mapping.xml" relativeToChangelogFile="false" id="09-03-2023-002"
+             author="denis.gitonga"/>
+    <include file="db/changelog/users.xml" relativeToChangelogFile="false" id="09-03-2023-003"
+             author="denis.gitonga"/>
+</databaseChangeLog>

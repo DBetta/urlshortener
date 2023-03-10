@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+
+  # postgres database
+  infiware-api-database:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=url_shortener
+      - POSTGRES_PASSWORD=s3cr3t
+
+volumes:
+  postgres:
+
+
