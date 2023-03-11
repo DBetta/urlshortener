@@ -4,6 +4,7 @@ import com.dbetta.urlshortener.config.UrlShortenerConfigurationProperties;
 import com.dbetta.urlshortener.dtos.UrlShortenerRequestDto;
 import com.dbetta.urlshortener.dtos.UrlShortenerResponseDto;
 import com.dbetta.urlshortener.entities.UrlMapping;
+import com.dbetta.urlshortener.exceptions.ShortUrlExpiredException;
 import com.dbetta.urlshortener.exceptions.ShortUrlNotFoundException;
 import com.dbetta.urlshortener.listeners.UrlVisitEvent;
 import com.dbetta.urlshortener.repositories.UrlMappingRepository;
@@ -58,10 +59,14 @@ public class UrlShortenerService {
     }
 
     public String retrieveLongUrl(String shortUrl) {
+        final var now = LocalDateTime.now();
         // TODO: check from redis
         final var urlMapping = urlMappingRepository.findByShortUrl(shortUrl);
         if (urlMapping == null)
             throw new ShortUrlNotFoundException(String.format("%s was not found", shortUrl));
+
+        if (urlMapping.getExpiresAt().isBefore(now))
+            throw new ShortUrlExpiredException("Oops! url has already expired");
 
         eventPublisher.publishEvent(new UrlVisitEvent(shortUrl));
         return urlMapping.getLongUrl();
