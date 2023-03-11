@@ -1,32 +1,36 @@
-<form class='p-3'>
+<form class='p-3' [formGroup]='registerForm'>
   <h1 class='mt-6 text-2xl font-serif'>Register</h1>
   <div class='mt-5 flex flex-col gap-0.5'>
     <label for='email'>Email Address</label>
-    <input id='email' type='email'>
+    <input id='email' type='email' autocomplete='username'
+           formControlName='email'>
   </div>
 
   <div class='mt-5 flex flex-col gap-0.5'>
     <label for='first-name'>First Name</label>
-    <input id='first-name' type='text'>
+    <input id='first-name' type='text' formControlName='firstName'>
   </div>
 
   <div class='mt-5 flex flex-col gap-0.5'>
     <label for='last-name'>Last Name</label>
-    <input id='last-name' type='text'>
+    <input id='last-name' type='text' formControlName='lastName'>
   </div>
 
   <div class='mt-5 flex flex-col gap-0.5'>
     <label for='password'>Password</label>
-    <input id='password' type='password'>
+    <input id='password' type='password' autocomplete='new-password'
+           formControlName='password'>
   </div>
 
   <div class='mt-5 flex flex-col gap-0.5'>
     <label for='confirm-password'>Confirm Password</label>
-    <input id='confirm-password' type='password'>
+    <input id='confirm-password' type='password' autocomplete='new-password'
+           formControlName='confirmPassword'>
   </div>
 
   <button type='submit'
-          class='w-full mt-12 py-3 px-3 bg-blue-500 hover:bg-blue-500/90 focus:ring-2 text-white uppercase tracking-wider text-center'>
+          class='w-full mt-12 py-3 px-3 bg-blue-500 hover:bg-blue-500/90 focus:ring-2 text-white uppercase tracking-wider text-center'
+          (click)='onRegister()'>
     Continue
   </button>
 

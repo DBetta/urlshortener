@@ -8,6 +8,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './shortener.component.html',
   styleUrls: ['./shortener.component.css']
 })
-export class ShortenerComponent {
+export default class ShortenerComponent {
 
 }

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { fromAccounts } from './account/+state';
 
 @Component({
   standalone: true,
@@ -12,6 +14,8 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class AppComponent {
-  title = 'url-shortener';
+export class AppComponent implements OnInit {
+
+  ngOnInit(): void {
+  }
 }
