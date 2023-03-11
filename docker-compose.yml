@@ -2,6 +2,24 @@ version: "3.9"
 
 services:
 
+  url-shortener-ui:
+    image: dbetta/urlshortener-ui
+    ports:
+      - "80:80"
+    restart: always
+    depends_on:
+      - urlshortener-api
+
+  urlshortener-api:
+    image: dbetta/urlshortener-be
+    environment:
+      - DB_HOST=url-shortener-database
+      - DB_PORT=5432
+    restart: always
+    depends_on:
+      - url-shortener-database
+
+
   # postgres database
   url-shortener-database:
     image: postgres
