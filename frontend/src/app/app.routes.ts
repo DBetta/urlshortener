@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard, noAuthGuard } from './app.guards';
+import { provideShortenerFeature } from './shortener/+state';
 
 export const appRoutes: Routes = [
   {
@@ -14,6 +15,7 @@ export const appRoutes: Routes = [
   },
   {
     path: 'shortener',
+    providers: [provideShortenerFeature()],
     loadComponent: () => import('./shortener/shortener.component'),
     canMatch: [authGuard]
   }

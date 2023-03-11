@@ -5,7 +5,7 @@ services:
   url-shortener-ui:
     image: dbetta/urlshortener-ui
     ports:
-      - "80:80"
+      - "10000:80"
     restart: always
     depends_on:
       - urlshortener-api

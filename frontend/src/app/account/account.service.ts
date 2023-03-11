@@ -23,9 +23,7 @@ export class AccountService {
   }
 
   navigateToLogin(payload: any): Observable<any> {
-    const promise = this.router.navigate(['../login'], {
-      relativeTo: this.activatedRoute
-    });
+    const promise = this.router.navigate(['/auth/login']);
     return from(promise);
   }
 
