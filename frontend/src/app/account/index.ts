@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { AccountComponent } from './account.component';
 
-export const ACCOUNT_ROUTES: Routes = [
+export default [
   {
     path: '',
     component: AccountComponent,
@@ -16,4 +16,4 @@ export const ACCOUNT_ROUTES: Routes = [
       }
     ]
   }
-];
+] as Routes;

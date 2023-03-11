@@ -1,20 +1,25 @@
-<form>
-  <h1>Sign In</h1>
-  <div>
-    <label>Username/EmailAddress</label>
-    <input type='text'>
+<form class='p-3' [formGroup]='loginForm'>
+  <h1 class='mt-6 text-2xl font-serif'>Sign In</h1>
+  <div class='mt-5 flex flex-col gap-0.5'>
+    <label for='username'>Username/EmailAddress</label>
+    <input id='username' type='text'
+           formControlName='username'>
   </div>
 
-  <div>
-    <label>Password</label>
-    <input type='password'>
+  <div class='mt-5 flex flex-col gap-0.5'>
+    <label for='password'>Password</label>
+    <input id='password' type='password'
+           formControlName='password'>
   </div>
 
-  <button type='submit'>
-    Sign In
+  <button type='submit'
+          class='w-full mt-12 py-3 px-3 bg-blue-500 hover:bg-blue-500/90 focus:ring-2 uppercase tracking-wider text-white text-center'
+          (click)='onLogin()'>
+    Continue
   </button>
 
-  <p>
-    Not yet registered? <a routerLink='../register'>Register</a>
+  <p class='mt-2'>
+    Not yet registered?
+    <a routerLink='../register' class='text-blue-500 cursor-pointer hover:underline'>Register</a>
   </p>
 </form>
